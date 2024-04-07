@@ -13,14 +13,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Admin {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(100)
+  address String
+  email String @unique @db.VarChar(100)
+  username String @unique @db.VarChar(100)
+  password String @db.VarChar(100)
+
+  @@map("admins")
+}
+
+model Attendance {
+  id Int @id @default(autoincrement())
+  clockin DateTime
+  clockout DateTime
+  location String
+
+  @@map("attendances")
+}
+
 model Users {
   id Int @id @default(autoincrement())
-  name String
+  name String @db.VarChar(100)
   address String
-  email String @unique
-  username String @unique
-  password String
-  role String
+  email String @unique @db.VarChar(100)
+  username String @unique @db.VarChar(100)
+  password String @db.VarChar(100)
 
   @@map("users")
 }
