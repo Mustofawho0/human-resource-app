@@ -7,7 +7,7 @@ const createPosition = async (req: Request, res: Response) => {
   try {
     
     const { name, salary } = req.body;
-
+    
     const admin = await prisma.position.create({
       data:{
         name,
