@@ -1,10 +1,12 @@
 import express, { Router } from "express";
-import HrRouter from "./HrRouter"
+import admin from "../controllers/admin/index"
+import users from "../controllers/users/index"
 
-const router = Router();
+const router = Router()
 
 router.use(express.json());
 
-router.use("/api", HrRouter)
+router.use("/admin", admin)
+router.use("/users", users)
 
 export default router;

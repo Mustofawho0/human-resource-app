@@ -43,3 +43,20 @@ model Users {
 
   @@map("users")
 }
+
+model Position {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(100)
+  salary Int
+
+  @@map("positions")
+}
+
+model Shift {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(100)
+  start DateTime
+  end DateTime
+
+  @@map("shifts")
+}
