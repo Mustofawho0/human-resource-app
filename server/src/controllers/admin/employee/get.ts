@@ -18,7 +18,7 @@ export const getEmployee = async (req: Request, res: Response) => {
       } as any
     })
     if(!getEmployee){
-      res.status(404).json({
+      return res.status(404).json({
         message: "Id Not Found!"
       }) 
     }

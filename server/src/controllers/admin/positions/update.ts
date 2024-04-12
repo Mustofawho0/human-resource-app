@@ -17,7 +17,7 @@ const updatePosition = async (req: Request, res: Response) => {
     console.log(getIdPosition);
 
     if (!getIdPosition) {
-      res.status(404).json({
+      return res.status(404).json({
         message: "Id Positions Not Found!",
       });
     }

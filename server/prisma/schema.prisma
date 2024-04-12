@@ -25,25 +25,30 @@ model Admin {
 }
 
 model Attendance {
-  id       Int      @id @default(autoincrement())
-  clockin  DateTime
-  clockout DateTime
-  location String
+  id         Int       @id @default(autoincrement())
+  clockin    DateTime?  @db.DateTime()
+  clockout   DateTime? @db.DateTime()
+  location   String
+  deduction  Int?
+  employeeId Int?      @unique
+  employee   Employee? @relation(fields: [employeeId], references: [id])
 
   @@map("attendances")
 }
 
 model Employee {
-  id         Int       @id @default(autoincrement())
-  name       String    @db.VarChar(100)
+  id         Int          @id @default(autoincrement())
+  name       String       @db.VarChar(100)
   address    String
-  email      String    @unique @db.VarChar(100)
-  username   String    @unique @db.VarChar(100)
-  password   String    @db.VarChar(100)
+  email      String       @unique @db.VarChar(100)
+  username   String       @unique @db.VarChar(100)
+  password   String       @db.VarChar(100)
+  leave      Int?
   positionId Int?
-  position   Position? @relation(fields: [positionId], references: [id])
+  position   Position?    @relation(fields: [positionId], references: [id])
   shiftId    Int?
-  shift      Shift?    @relation(fields: [shiftId], references: [id])
+  shift      Shift?       @relation(fields: [shiftId], references: [id])
+  attendance Attendance[]
 
   @@map("employees")
 }

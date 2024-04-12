@@ -15,13 +15,15 @@ const createPosition = async (req: Request, res: Response) => {
       }
     })
 
-    res.status(200).json({
-      message: "Success!",
+    return res.status(200).json({
+      message: "Create Position Success!",
       data: admin
     })
 
   } catch (error) {
-    console.log(error)
+    return res.status(404).json({
+      message: "Error: Can't Create Position!"
+    })
   }
 }
 

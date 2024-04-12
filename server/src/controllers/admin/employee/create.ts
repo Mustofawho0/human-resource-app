@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 const createEmployee = async (req: Request, res: Response) => {
   try {
-    const { name, address, email, username, password, positionId, shiftId } =
+    const { name, address, email, username, password, leave, positionId, shiftId } =
       req.body;
 
     const position = await prisma.position.findFirst({
@@ -15,7 +15,7 @@ const createEmployee = async (req: Request, res: Response) => {
     });
 
     if (!position) {
-      res.status(404).json({
+      return res.status(404).json({
         message: "positionId not found",
       });
     }
@@ -27,7 +27,7 @@ const createEmployee = async (req: Request, res: Response) => {
     });
 
     if (!shift) {
-      res.status(404).json({
+      return res.status(404).json({
         message: "shiftId not found",
       });
     }
@@ -39,23 +39,20 @@ const createEmployee = async (req: Request, res: Response) => {
         email,
         username,
         password,
+        leave,
         positionId,
         shiftId,
       },
     });
-
-    if (!positionId && !shiftId) {
-      res.status(404).json({
-        message: " Position Id / Shift Id Not Found!",
-      });
-    }
 
     return res.status(201).json({
       message: "Create Employee Success!",
       data: setData,
     });
   } catch (error) {
-    console.log(error);
+    return res.status(404).json({
+      message: "Error: Can't Create Employee"
+    })
   }
 };
 export default createEmployee;

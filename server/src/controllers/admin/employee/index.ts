@@ -11,7 +11,7 @@ router.use(express.json());
 
 router.post("/", createEmployee)
 router.delete("/:id", deleteEmployee)
-router.patch("/:id", updateEmployee)
+router.put("/:id", updateEmployee)
 router.get("/:id", getEmployee)
 router.get("/", listEmployee)
 

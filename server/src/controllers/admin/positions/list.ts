@@ -14,7 +14,7 @@ const listPosition = async (req:Request, res:Response) => {
     })
 
     if(listPosition.length === 0){
-      res.status(404).json({
+      return res.status(404).json({
         message: "Page Not Found!"
       })
     }

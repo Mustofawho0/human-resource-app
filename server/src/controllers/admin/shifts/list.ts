@@ -8,7 +8,7 @@ const listShift = async (req: Request, res: Response) => {
     const listShift = await prisma.shift.findMany()
 
     if(listShift.length === 0){
-      res.status(404).json({
+      return res.status(404).json({
         message: "Data Not Found!"
       })
     }

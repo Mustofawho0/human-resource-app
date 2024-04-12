@@ -13,7 +13,7 @@ const createShift = async (req: Request, res: Response) => {
 
     const isBefore = startTime < endTime;
     if (!isBefore) {
-      res.status(400).json({
+      return res.status(400).json({
         message: "Error: End Shift is Before Start Shift!",
       });
     }

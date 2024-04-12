@@ -12,7 +12,7 @@ const deletePosition = async (req: Request, res: Response) => {
       }
     })
     if(!getIdPosition){
-      res.status(404).json({
+      return res.status(404).json({
         message: "Id Not Found!"
       })
     }

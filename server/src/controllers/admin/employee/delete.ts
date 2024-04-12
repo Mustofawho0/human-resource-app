@@ -13,7 +13,7 @@ const deleteEmployee = async (req: Request, res: Response) => {
       }
     })
     if(!getIdEmployee){
-      res.status(404).json({
+      return res.status(404).json({
         message: "Id Not Found!"
       })
     }

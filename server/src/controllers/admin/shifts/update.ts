@@ -17,7 +17,7 @@ const updateShift = async (req: Request, res: Response) => {
     const isBefore = startTime < endTime
 
     if(!isBefore){
-      res.status(400).json({
+      return res.status(400).json({
         message: "Error: EndShift input Before StartShift"
       })
     }

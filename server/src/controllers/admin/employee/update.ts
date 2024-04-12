@@ -7,7 +7,7 @@ export const updateEmployee = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
 
-    const { name, address, email, username, password, positionId, shiftId } =
+    const { name, address, email, username, password, leave, positionId, shiftId } =
       req.body;
 
     const getIdEmployee = await prisma.employee.findFirst({
@@ -16,7 +16,7 @@ export const updateEmployee = async (req: Request, res: Response) => {
       },
     });
     if (!getIdEmployee) {
-      res.status(404).json({
+      return res.status(404).json({
         message: "Id Not Found!",
       });
     }
@@ -30,8 +30,7 @@ export const updateEmployee = async (req: Request, res: Response) => {
     if (!position) {
       return res.status(404).json({
         message: "positionId not found",
-      });
-      
+      }); 
     }
 
     const shift = await prisma.shift.findFirst({
@@ -56,6 +55,7 @@ export const updateEmployee = async (req: Request, res: Response) => {
         email,
         username,
         password,
+        leave,
         positionId,
         shiftId,
       },
@@ -69,7 +69,7 @@ export const updateEmployee = async (req: Request, res: Response) => {
     console.log(error);
 
     return res.status(404).json({
-      messsage: "Menyala Abangkuu",
+      messsage: "Error To Update",
     });
   }
 };
