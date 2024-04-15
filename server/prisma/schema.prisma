@@ -26,7 +26,7 @@ model Admin {
 
 model Attendance {
   id         Int       @id @default(autoincrement())
-  clockin    DateTime?  @db.DateTime()
+  clockin    DateTime? @db.DateTime()
   clockout   DateTime? @db.DateTime()
   location   String
   deduction  Int?
@@ -63,10 +63,10 @@ model Position {
 }
 
 model Shift {
-  id         Int        @id @default(autoincrement())
-  name       String     @db.VarChar(100)
-  startShift DateTime   @db.Time()
-  endShift   DateTime   @db.Time()
+  id         Int          @id @default(autoincrement())
+  name       String       @db.VarChar(100)
+  startShift DateTime     @db.Time()
+  endShift   DateTime     @db.Time()
   employee   Employee[]
 
   @@map("shifts")
