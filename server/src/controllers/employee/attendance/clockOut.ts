@@ -13,6 +13,9 @@ const createClockOut = async (req: Request, res: Response) => {
       where: {
         id: parseInt(employeeId),
       },
+      include: {
+        position: true
+      }
     });
     if (!employee) {
       return res.status(404).json({
@@ -57,7 +60,9 @@ const createClockOut = async (req: Request, res: Response) => {
 
     const lostWorkingMinutes = workMinutesADay - totalEmploeeWork;
     const deductionConstanta = Math.floor(lostWorkingMinutes / 30);
-    const totalDeduction = deductionConstanta * 15000;
+    const employeeSalary = employee.position?.salary as any
+    const totalDeduction = deductionConstanta * (0.001 * employeeSalary)
+    console.log(employeeSalary * 0.001)
 
     await prisma.attendance.update({
       where: {

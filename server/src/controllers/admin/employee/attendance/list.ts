@@ -21,7 +21,7 @@ const listAttendanceEmployee = async (req: Request, res: Response) => {
       }
     })
     res.status(200).json({
-      message: "Success Abangkuu!",
+      message: "List Attendance Employee Success!",
       data: listAttendanceEmployee
     });
   } catch (error) {
