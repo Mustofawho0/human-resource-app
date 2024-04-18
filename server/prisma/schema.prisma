@@ -37,18 +37,19 @@ model Attendance {
 }
 
 model Employee {
-  id         Int          @id @default(autoincrement())
-  name       String       @db.VarChar(100)
-  address    String
-  email      String       @unique @db.VarChar(100)
-  username   String       @unique @db.VarChar(100)
-  password   String       @db.VarChar(100)
-  leave      Int?
-  positionId Int?
-  position   Position?    @relation(fields: [positionId], references: [id])
-  shiftId    Int?
-  shift      Shift?       @relation(fields: [shiftId], references: [id])
-  attendance Attendance[]
+  id           Int            @id @default(autoincrement())
+  name         String         @db.VarChar(100)
+  address      String
+  email        String         @unique @db.VarChar(100)
+  username     String         @unique @db.VarChar(100)
+  password     String         @db.VarChar(100)
+  leave        Int?
+  positionId   Int?
+  position     Position?      @relation(fields: [positionId], references: [id])
+  shiftId      Int?
+  shift        Shift?         @relation(fields: [shiftId], references: [id])
+  attendance   Attendance[]
+  leaveRequest LeaveRequest[]
 
   @@map("employees")
 }
@@ -63,11 +64,25 @@ model Position {
 }
 
 model Shift {
-  id         Int          @id @default(autoincrement())
-  name       String       @db.VarChar(100)
-  startShift DateTime     @db.Time()
-  endShift   DateTime     @db.Time()
+  id         Int        @id @default(autoincrement())
+  name       String     @db.VarChar(100)
+  startShift DateTime   @db.Time()
+  endShift   DateTime   @db.Time()
   employee   Employee[]
 
   @@map("shifts")
+}
+
+model LeaveRequest {
+  id         Int       @id @default(autoincrement())
+  startDate  DateTime  @db.Date
+  endDate    DateTime  @db.Date
+  reason     String    @db.VarChar(100)
+  status     Boolean   @default(false)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @default(now()) @updatedAt
+  employeeId Int?      @unique
+  employee   Employee? @relation(fields: [employeeId], references: [id])
+
+  @@map("leaverequests")
 }
