@@ -12,7 +12,7 @@ export const ValidasiRegister = Yup.object().shape({
     .min(6, 'Username Must Have Minimum 6 Characters')
     .required('Username is Required'),
   password: Yup.string().required('Password is Required'),
-  positionId: Yup.string().required('Position is Required'),
+  positionId: Yup.number().required('Position is Required'),
   leave: Yup.number().required('Leave is Required'),
-  shiftId: Yup.string().required('Shift is Required'),
+  shiftId: Yup.number().required('Shift is Required'),
 });

@@ -16,7 +16,7 @@ const DataEmployee = () => {
       <div className="container mx-auto sm:p-4 text-gray-800">
         <div className="overflow-x-auto">
           <h2 className="mb-4 text-2xl font-semibold leading-tight">
-            Data Employee
+            List Employee
           </h2>
           <table className="w-full text-xs text-center whitespace-nowrap">
             <thead>

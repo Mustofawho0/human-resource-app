@@ -22,9 +22,9 @@ export default function RegisterPage() {
             shiftId: '',
           }}
           validationSchema={ValidasiRegister}
-          onSubmit={async (value) => {
-            onHandleCreateDataEmployee(value);
-            console.log(value);
+          onSubmit={async (data) => {
+            onHandleCreateDataEmployee(data);
+            console.log(data);
           }}
         >
           {/* console.log(value) */}
@@ -156,11 +156,11 @@ export default function RegisterPage() {
                         className="input input-bordered rounded-none border border-gray-300"
                       >
                         <option value="">Choose Role</option>
-                        <option value="manager">Manager</option>
-                        <option value="project_manager">
-                          Project/Product Manager
+                        <option value="1">Manager</option>
+                        <option value="2">
+                         Project/Product Manager
                         </option>
-                        <option value="programmer">Programmer</option>
+                        <option value="3">Programmer</option>
                       </Field>
                       <ErrorMessage
                         name="positionId"
@@ -182,8 +182,8 @@ export default function RegisterPage() {
                         className="input input-bordered rounded-none border border-gray-300"
                       >
                         <option value="">Choose Shift for Employee </option>
-                        <option value="shift_1">09:00 - 18:00</option>
-                        <option value="shif_2">13:00 - 22:00</option>
+                        <option value="1">09:00 - 18:00</option>
+                        <option value="2">13:00 - 22:00</option>
                       </Field>
                       <ErrorMessage
                         name="shiftId"

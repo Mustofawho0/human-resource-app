@@ -16,9 +16,12 @@ export const useEmployeeCrud = () => {
       console.log(error);
     }
   };
-  const onHandleCreateDataEmployee = async (value) => {
+  const onHandleCreateDataEmployee = async (data) => {
     try {
-     return await axios.post('http://localhost:1111/api/admin/employee/', value);
+      await axios.post(
+        'http://localhost:1111/api/admin/employee/register',
+        data
+      );
     } catch (error) {
       console.log(error);
     }
