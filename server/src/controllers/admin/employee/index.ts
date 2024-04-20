@@ -13,7 +13,7 @@ router.use(express.json());
 router.use('/attendances', attendance);
 router.use('/leaves', leave);
 
-router.post('/register', createEmployee);
+router.post('/', createEmployee);
 router.delete('/:id', deleteEmployee);
 router.put('/:id', updateEmployee);
 router.get('/:id', getEmployee);
