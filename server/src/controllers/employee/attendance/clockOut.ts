@@ -62,7 +62,6 @@ const createClockOut = async (req: Request, res: Response) => {
     const deductionConstanta = Math.floor(lostWorkingMinutes / 30);
     const employeeSalary = employee.position?.salary as any
     const totalDeduction = deductionConstanta * (0.001 * employeeSalary)
-    console.log(employeeSalary * 0.001)
 
     await prisma.attendance.update({
       where: {
