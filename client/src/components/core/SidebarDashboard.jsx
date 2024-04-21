@@ -4,6 +4,7 @@ import {
   AiFillHome,
   AiFillHdd,
   AiFillIdcard,
+  AiFillAlert,
 } from 'react-icons/ai';
 import { BsFillFileEarmarkPersonFill } from 'react-icons/bs';
 import { RiLogoutBoxRFill } from 'react-icons/ri';
@@ -80,6 +81,16 @@ export const SidebarDashboard = () => {
             >
               <BsFillFileEarmarkPersonFill className="w-5 h-5 fill-current text-gray-600" />
               <span>Attendance</span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              rel="noopener noreferrer"
+              href={'/admin/leave'}
+              className="flex items-center p-2 space-x-3 rounded-md"
+            >
+              <AiFillAlert className="w-5 h-5 fill-current text-gray-600" />
+              <span>Leave</span>
             </Link>
           </li>
         </ul>

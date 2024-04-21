@@ -19,7 +19,7 @@ export const useEmployeeCrud = () => {
   const onHandleCreateDataEmployee = async (data) => {
     try {
       await axios.post(
-        'http://localhost:1111/api/admin/employee/register',
+        'http://localhost:1111/api/admin/employee/',
         data
       );
     } catch (error) {
