@@ -1,0 +1,7 @@
+{
+    "prettier.singleQuote": true,
+    "prettier.jsxSingleQuote": true,
+    "files.autoSaveWhenNoErrors": true,
+    "editor.formatOnSave": true,
+    "explorer.compactFolders": false
+}

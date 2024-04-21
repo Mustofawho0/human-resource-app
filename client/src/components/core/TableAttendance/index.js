@@ -1,7 +1,6 @@
 export const TableAttendance = ({
   name,
   position,
-  location,
   clockin,
   clockout,
   deduction,
@@ -15,9 +14,6 @@ export const TableAttendance = ({
           </td>
           <td className="px-3 py-2">
             <span>{position}</span>
-          </td>
-          <td className="px-3 py-2">
-            <span>{location}</span>
           </td>
           <td className="px-3 py-2">
             <span>{clockin}</span>

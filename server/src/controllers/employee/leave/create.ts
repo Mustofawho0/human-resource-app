@@ -1,6 +1,6 @@
-import { PrismaClient } from "@prisma/client";
-import { Request, Response } from "express";
-import { differenceInBusinessDays } from "date-fns";
+import { PrismaClient } from '@prisma/client';
+import { Request, Response } from 'express';
+import { differenceInBusinessDays } from 'date-fns';
 
 const prisma = new PrismaClient();
 
@@ -16,13 +16,13 @@ export const createLeaveReq = async (req: Request, res: Response) => {
 
     if (!startDate || !endDate) {
       return res.status(400).json({
-        message: "Start Date and End Date are Required!",
+        message: 'Start Date and End Date are Required!',
       });
     }
 
     if (startDate >= endDate) {
       return res.status(400).json({
-        message: "Start Date must be before End Date!",
+        message: 'Start Date must be before End Date!',
       });
     }
 
@@ -35,20 +35,20 @@ export const createLeaveReq = async (req: Request, res: Response) => {
         startDate: startLeave,
         endDate: endLeave,
         reason,
-        status: "requested",
+        status: 'requested',
         employeeId: employeeId,
-        totalDayLeave: totalLeave
-      } as any
+        totalDayLeave: totalLeave,
+      } as any,
     });
 
     return res.status(200).json({
-      message: "Request Leave Success!",
+      message: 'Request Leave Success!',
       data: createLeave,
     });
   } catch (error) {
     console.log(error);
     return res.status(404).json({
-      message: "Error to Request Leave!",
+      message: 'Error to Request Leave!',
     });
   }
 };

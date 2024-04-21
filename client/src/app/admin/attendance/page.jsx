@@ -23,7 +23,6 @@ const AttendancePage = () => {
               <tr className="bg-gray-300">
                 <th className="py-3">Name</th>
                 <th className="py-3">Job Title</th>
-                <th className="py-3">Location</th>
                 <th className="py-3">Clock In</th>
                 <th className="py-3">Clock Out</th>
                 <th className="py-3">Deduction</th>
@@ -41,7 +40,6 @@ const AttendancePage = () => {
                     key={index}
                     name={value.employee.name}
                     position={value.employee.position.name}
-                    location={value.location}
                     clockin={value.clockin}
                     clockout={value.clockout}
                     deduction={value.deduction}

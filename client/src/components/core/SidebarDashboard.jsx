@@ -66,16 +66,6 @@ export const SidebarDashboard = () => {
           <li>
             <Link
               rel="noopener noreferrer"
-              href={'/admin/shift'}
-              className="flex items-center p-2 space-x-3 rounded-md"
-            >
-              <AiFillSchedule className="w-5 h-5 fill-current text-gray-600" />
-              <span>Shift</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              rel="noopener noreferrer"
               href={'/admin/attendance'}
               className="flex items-center p-2 space-x-3 rounded-md"
             >
