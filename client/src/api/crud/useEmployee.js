@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import axios from 'axios';
-import { useState } from 'react';
+import axios from "axios";
+import { useState } from "react";
 
 export const useEmployeeCrud = () => {
   const [employee, setEmployee] = useState(null);
@@ -9,7 +9,7 @@ export const useEmployeeCrud = () => {
   const onHandleGetDataEmployee = async () => {
     try {
       const getEmployee = await axios.get(
-        'http://localhost:1111/api/admin/employee/'
+        "http://localhost:1111/api/admin/employee/"
       );
       setEmployee(getEmployee.data);
     } catch (error) {
@@ -19,7 +19,7 @@ export const useEmployeeCrud = () => {
   const onHandleCreateDataEmployee = async (data) => {
     try {
       await axios.post(
-        'http://localhost:1111/api/admin/employee/register',
+        "http://localhost:1111/api/admin/employee/register",
         data
       );
     } catch (error) {

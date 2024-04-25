@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { isWeekend, addDays, format, parseISO } from "date-fns";
+import { isWeekend, addDays, format} from "date-fns";
 import { Request, Response } from "express";
 
 const prisma = new PrismaClient();
@@ -57,8 +57,11 @@ export const updateLeaveEmployee = async (req: Request, res: Response) => {
           shift: true
           }
       });
+
       const leaveStartShift = format(employee?.shift?.startShift || new Date(), "HH:mm:ss")
+      
       const leaveEndShift = format(employee?.shift?.endShift || new Date(), "HH:mm:ss")
+      
       
       // Example usage
       const startDate = new Date(employeeLeaveReq.startDate);
@@ -67,50 +70,49 @@ export const updateLeaveEmployee = async (req: Request, res: Response) => {
       
       const datesBetween = getDates(startDate, endDate);
       
-
-      
      for(let i=0; i<datesBetween.length; i++){
       const formatedDateOnly = format(datesBetween[i], "yyyy-MM-dd")
 
-      const leaveStartAtt = (`${formatedDateOnly}T${leaveStartShift}`)
+      const leaveStartAtt = (`${formatedDateOnly}T${leaveStartShift}`) 
       const startShift = new Date(leaveStartAtt)
+      
      
-
       const leaveEndAtt = (`${formatedDateOnly}T${leaveEndShift}`)
       const endShift = new Date(leaveEndAtt)
       
-      await prisma.attendance.create({
-        data:{
-          clockin: startShift,
-          clockout: endShift,
-          location: employeeLeaveReq.reason
-        } as any
-      })
+    //   await prisma.attendance.create({
+    //     data:{
+    //       clockin: startShift,
+    //       clockout: endShift,
+    //       location: employeeLeaveReq.reason,
+    //       employeeId: employeeLeaveReq.employeeId
+    //     } as any
+    //   })
      }
 
-      const remainingLeave =
-        (employee?.leave || 0) - (employeeLeaveReq?.totalDayLeave || 0);
+      // const remainingLeave =
+      //   (employee?.leave || 0) - (employeeLeaveReq?.totalDayLeave || 0);
 
-      await prisma.employee.update({
-        where: {
-          id: Number(employeeLeaveReq.employeeId),
-        },
-        data: {
-          leave: remainingLeave,
-        },
-      });
+      // await prisma.employee.update({
+      //   where: {
+      //     id: Number(employeeLeaveReq.employeeId),
+      //   },
+      //   data: {
+      //     leave: remainingLeave,
+      //   },
+      // });
 
-      await prisma.leaveRequest.update({
-        where: {
-          id: Number(id),
-        },
-        data: {
-          status: status,
-        },
-      });
-      return res.status(200).json({
-        message: "Update Leave Success!",
-      });
+      // await prisma.leaveRequest.update({
+      //   where: {
+      //     id: Number(id),
+      //   },
+      //   data: {
+      //     status: status,
+      //   },
+      // });
+      // return res.status(200).json({
+      //   message: "Update Leave Success!",
+      // });
     }
   } catch (error) {
     console.log(error);
@@ -130,6 +132,6 @@ function getDates(startDate: Date, endDate: Date) {
     }
     currentDate = addDays(currentDate, 1);
   }
-
+  console.log(currentDate)
   return dates;
 }
